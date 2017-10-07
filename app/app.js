@@ -2,6 +2,17 @@
 
 const app = angular.module('tnaComm', ['ngRoute']);
 
+let isAuth = (userFactory) => new Promise ((resolve, reject) => {
+	userFactory.checkAuthenticated()
+		.then((userExists) => {
+			if (userExists) {
+				resolve();
+			} else {
+				reject();
+			}
+		});
+});
+
 
 app.config(($routeProvider) => {
 	$routeProvider
@@ -13,10 +24,13 @@ app.config(($routeProvider) => {
 		controller: 'userCtrl'
 	})
 	.when('/home', {
-		templateUrl: 'partials/home.html'
+		templateUrl: 'partials/home.html',
+		resolve: {isAuth}
 	})
 	.when('/upload', {
 		templateUrl: 'partials/upload-view.html',
-		controller: 'uploadCtrl'
-	});
+		controller: 'uploadCtrl',
+		resolve: {isAuth}
+	})
+	.otherwise('/');
 });
