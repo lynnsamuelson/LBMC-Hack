@@ -10,3 +10,25 @@ $blue: #5bc0de;
 	color: white !important;
 	cursor: pointer;
 }
+
+// login styles
+.login-input {
+	height: 4em;
+	width: 200%;
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.login-buttons {
+	display: flex;
+	margin-top: 3em;
+	justify-content: space-around;
+}
+
+.login-btn {
+	background-color: $blue;
+	border: 0;
+	width: 40%;
+	margin: 0.5em;
+	cursor: pointer;
+}
