@@ -2,9 +2,11 @@
 
 app.factory('uploadFactory', function ($q) {
 
+	//parses data from csv to Json, posts to db, called from uploadCtrl
 	const uploadFile = (data) => {
 		return $q(() => {
-			console.log('data from uploadFile', data);
+			let uploadObj = angular.toJson(data.data);
+			console.log("uploadObj", uploadObj);
 		});
 	};
 
