@@ -4,4 +4,4 @@ dist/
 lib/node_modules
 lib/.sass-cache
 data/
-sudo apt-get install ruby-full
+lib/package-lock.json
