@@ -1,3 +1,8 @@
 tnAchieves.sqlite
-DS_Store
 node_modules
+.DS_Store
+css/
+dist/
+lib/node_modules
+lib/.sass-cache
+data/
