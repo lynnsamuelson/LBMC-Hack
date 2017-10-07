@@ -26,7 +26,11 @@ app.config(($routeProvider) => {
 	.when('/home', {
 		templateUrl: 'partials/home.html',
 		resolve: {isAuth}
-	})
+  })
+	.when('/search', {
+		templateUrl: 'partials/search-view.html',
+		controller: 'searchViewCtrl'
+  })
 	.when('/upload', {
 		templateUrl: 'partials/upload-view.html',
 		controller: 'uploadCtrl',
