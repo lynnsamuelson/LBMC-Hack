@@ -36,5 +36,9 @@ app.config(($routeProvider) => {
 		controller: 'uploadCtrl',
 		resolve: {isAuth}
 	})
+	.when('/results',{
+		templateUrl: 'partials/search-results.html',
+		controller: 'resultsCtrl'
+	})
 	.otherwise('/');
 });
