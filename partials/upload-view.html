@@ -1,9 +1,14 @@
 <div class="container">
-	<h2>File Upload</h2>
+	<div class="header mt-5 mb-5">
+	  <h3>File Upload</h3>
+	</div>
 	<div class="form-group">
 		<label class="custom-file">
-		    <input type="file" id="file">
+		    <input type="file" id="file" class="custom-file-input">
+		    <span class="custom-file-control"></span>
 		</label>
-		<button id="upload-btn" ng-click="upload()">Upload</button>
+	</div>
+	<div class="login-button">
+		<button type="button" ng-click="upload()" class="btn btn-primary btn-lg login-btn">Upload</button>
 	</div>
 </div>
