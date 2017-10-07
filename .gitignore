@@ -3,3 +3,4 @@ css/
 dist/
 lib/node_modules
 lib/.sass-cache
+data/
