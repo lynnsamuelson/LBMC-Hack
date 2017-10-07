@@ -16,5 +16,9 @@ app.config(($routeProvider) => {
 	.when('/upload', {
 		templateUrl: 'partials/upload-view.html',
 		controller: 'uploadCtrl'
+	})
+	.when('/results',{
+		templateUrl: 'partials/search-results.html',
+		controller: 'resultsCtrl'
 	});
 });
