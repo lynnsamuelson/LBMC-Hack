@@ -45,33 +45,33 @@ let csvEmailObjs = [
 
 // db.serialize( () => {
 
-//keeping these commented out pieces for generating the table for order reference -- in the INPUT stage, the order matters a lot
+// // keeping these commented out pieces for generating the table for order reference -- in the INPUT stage, the order matters a lot
 
-    //db.run(`DROP TABLE IF EXISTS email`);
+//     db.run(`DROP TABLE IF EXISTS EmailFiles`);
 
-	// db.run(`CREATE TABLE IF NOT EXISTS email(
-	//     email_id INTEGER PRIMARY KEY NOT NULL,
-	//     clicked TEXT NOT NULL,
-	//     contact TEXT NOT NULL,
-	//     contactId TEXT NOT NULL, 
-	//     contactRecordType TEXT NOT NULL, 
-	//     dateBounced DATE, 
-	//     dateOpened DATE, 
-	//     dateSent DATE NOT NULL, 
-	//     dateUnsubscribed DATE, 
-	//     deleted TEXT NOT NULL, 
-	//     email TEXT NOT NULL, 
-	//     emailName TEXT NOT NULL, 
-	//     fromAddress TEXT, 
-	//     fromName TEXT NOT NULL, 
-	//     hardBounce TEXT NOT NULL, 
-	//     numberOfTotalClicks INTEGER NOT NULL, 
-	//     numberOfUniqueClicks INTEGER NOT NULL, 
-	//     opened TEXT NOT NULL, 
-	//     relatedStudentContactId TEXT, 
-	//     softBounce TEXT NOT NULL, 
-	//     subjectLine TEXT
-	// )`);
+// 	db.run(`CREATE TABLE IF NOT EXISTS EmailFiles(
+// 	    email_id INTEGER PRIMARY KEY NOT NULL,
+// 	    clicked TEXT NOT NULL,
+// 	    contact TEXT NOT NULL,
+// 	    contactId TEXT NOT NULL, 
+// 	    contactRecordType TEXT NOT NULL, 
+// 	    dateBounced DATE, 
+// 	    dateOpened DATE, 
+// 	    dateSent DATE NOT NULL, 
+// 	    dateUnsubscribed DATE, 
+// 	    deleted TEXT NOT NULL, 
+// 	    email TEXT NOT NULL, 
+// 	    emailName TEXT NOT NULL, 
+// 	    fromAddress TEXT, 
+// 	    fromName TEXT NOT NULL, 
+// 	    hardBounce TEXT NOT NULL, 
+// 	    numberOfTotalClicks INTEGER NOT NULL, 
+// 	    numberOfUniqueClicks INTEGER NOT NULL, 
+// 	    opened TEXT NOT NULL, 
+// 	    relatedStudentContactId TEXT, 
+// 	    softBounce TEXT NOT NULL, 
+// 	    subjectLine TEXT
+// 	)`);
 
 
 
@@ -108,7 +108,7 @@ module.exports.prepEmailData = (data) => {
 //POST from upload, iterate over each of the items in the parsed array of objects:
 module.exports.insertEmailsIntoDB = (csvEmailObjs) => {
     csvEmailObjs.forEach( (emailObj) => {
-        db.run(`INSERT INTO email VALUES (null, 
+        db.run(`INSERT INTO EmailFiles VALUES (null, 
         	'${emailObj.clicked}', 
         	'${emailObj.contact}', 
         	'${emailObj.contactId}', 
@@ -133,17 +133,16 @@ module.exports.insertEmailsIntoDB = (csvEmailObjs) => {
 }
 
 //uncommenting this will call this function and input those objects above
-	// module.exports.insertEmailsIntoDB(csvEmailObjs);
+// 	module.exports.insertEmailsIntoDB(csvEmailObjs);
 // });
 
 module.exports.searchByContactId = (contactId) => {
-	console.log("contact id", contactId);
 	return new Promise( (resolve, reject) => {
-		db.all(`SELECT * FROM email WHERE contactId = "${contactId}"`, (err, emailsData) => {
+		db.all(`SELECT * FROM EmailFiles WHERE contactId = "${contactId}"`, (err, emailsData) => {
 	        if (err) return reject(err);//if error, pass on to error handler
 	        resolve(emailsData);
-		})
-	})
+		});
+	});
 };
 
 

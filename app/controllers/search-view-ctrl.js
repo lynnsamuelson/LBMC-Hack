@@ -2,7 +2,8 @@
 app.controller('searchViewCtrl', function ($scope, $location, searchFactory) {
   function searchDB(searchObjNotFormatted){
     // send searchObjNotFormatted to Factory
-    searchFactory.searchAPI(searchObjNotFormatted);
+    searchFactory.searchMessagesById("0036100000uHOWD");
+    // searchFactory.searchAPI(searchObjNotFormatted);
   }
 
   $scope.searchFunct = function(keyEvent){

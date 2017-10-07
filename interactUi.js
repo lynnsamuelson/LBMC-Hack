@@ -1,19 +1,19 @@
 'use strict';
 
-function searchMessagesById(contactId) {
-    return $q( (resolve, reject) => {
-      $http.get(`http://localhost:3000/messages/${contactId}`)
-      .then( (data) => {
-        console.log("records for that student:", data)
-        resolve(data);
-      })
-      .catch( (err) => {
-        reject(err);
-      });
-    });
-}
+// function searchMessagesById(contactId) {
+//     return $q( (resolve, reject) => {
+//       $http.get(`http://localhost:3000/messages/${contactId}`)
+//       .then( (data) => {
+//         console.log("records for that student:", data)
+//         resolve(data);
+//       })
+//       .catch( (err) => {
+//         reject(err);
+//       });
+//     });
+// }
 
-searchMessagesById("0036100000uHOWD");
+// searchMessagesById("0036100000uHOWD");
 
 // //here, we need the listener that gets the input from the search field, then in that function:
 // if (contactID) {
