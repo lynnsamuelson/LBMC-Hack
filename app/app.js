@@ -8,5 +8,9 @@ app.config(($routeProvider) => {
 	.when('/', {
 		templateUrl: 'partials/landing.html',
 		controller: 'userCtrl'
+	})
+	.when('/search',{
+		templateUrl: 'partials/search-view.html',
+		controller: 'searchViewCtrl'
 	});
 });
