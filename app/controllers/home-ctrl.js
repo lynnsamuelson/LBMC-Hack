@@ -1,7 +1,8 @@
 'use strict';
-app.controller('purgeCtrl', function ($scope, purgeFactory) {
+app.controller('homeCtrl', function ($scope, purgeFactory, userFactory) {
 
 	$scope.showPurge = false;
+	$scope.showAdmin = false;
 
 	$scope.purgeData = () => {
 		console.log('purge data firing');
@@ -19,6 +20,13 @@ app.controller('purgeCtrl', function ($scope, purgeFactory) {
 			.catch(error => console.log('error from check DB', error));
 	};
 
+	const checkForAdmin = () => {
+		userFactory.checkAdmin()
+			.then(user => $scope.showAdmin = user)
+			.catch(error => console.log('error from checkForAdmin', error));
+	};
+
 	checkForDataToPurge();
+	checkForAdmin();
 
 });

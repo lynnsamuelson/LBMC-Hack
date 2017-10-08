@@ -38,7 +38,7 @@ app.config(($routeProvider) => {
 	})
 	.when('/home', {
 		templateUrl: 'partials/home.html',
-		controller: 'purgeCtrl',
+		controller: 'homeCtrl',
 		resolve: {isAuth}
   })
 	.when('/search', {
@@ -56,7 +56,7 @@ app.config(($routeProvider) => {
 		controller: 'resultsCtrl',
 		resolve: {isAuth}
 	})
-	.when('user-admin', {
+	.when('/user-admin', {
 		templateUrl: 'partials/user-admin.html',
 		controller: 'userAdminCtrl',
 		resolve: {isAdmin}
