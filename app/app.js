@@ -25,8 +25,8 @@ app.config(($routeProvider) => {
 	})
 	.when('/home', {
 		templateUrl: 'partials/home.html',
-		controller: 'purgeCtrl',
-		resolve: {isAuth}
+		controller: 'purgeCtrl'
+		// resolve: {isAuth}
   })
 	.when('/search', {
 		templateUrl: 'partials/search-view.html',

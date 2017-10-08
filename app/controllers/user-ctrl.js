@@ -13,11 +13,12 @@ app.controller('userCtrl', function ($scope, $location, userFactory) {
 	//pulls in email and password and fires loginUser, redirects is resolved
 	$scope.login = () => {
 		userFactory.loginUser($scope.user)
-			.then((user) => {
-				if (user) {
-					$location.url('/home');
-				} else {
+			.then((userData) => {
+				console.log("userData", userData);
+				if (userData === null) {
 					$scope.errorMessage = true;
+				} else {
+					$location.url('/home');
 				}
 			})
 			.catch(error => console.log(error));

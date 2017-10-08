@@ -1,23 +1,27 @@
 'use strict';
 
-app.factory('userFactory', function($location, $q) {
+app.factory('userFactory', function($location, $q, $http) {
 
 	//store current user id information
 	let currentUser = null;
 
-	//temporary username and password for testing
-	let email = 'example@example.com',
-	password = '123456';
+	//temporary database url for getting users collection
+	let url = '../data/user-list.json';
 
 	//checks checks login input against temp username and password, resolves true or false
 	const loginUser = (user) => {
 		return $q((resolve, reject) => {
-			if (user.email === email && user.password === password) {
-				currentUser = 'example';
-				resolve(true);
-			} else {
-				resolve(false);
-			}
+			$http.get(url)
+				.then(userList => {
+					userList.data.forEach(item => {
+						if (item.email === user.email && item.password === user.password) {
+							currentUser = item;
+							resolve(item);
+						}
+						resolve(null);
+					});
+				})
+				.catch(error => reject(error));
 		});
 	};
 
