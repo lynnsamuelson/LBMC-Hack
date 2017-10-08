@@ -1,3 +1,7 @@
+div {
+	border: 1px solid white;
+}
+
 //colors
 $green: #9fcf67;
 $gray: #808040;
@@ -12,6 +16,15 @@ a.nav-link {
 	text-decoration: none;
 }
 
+//home styles
+
+p.purge-text {
+	margin-top: 8em;
+}
+
+.home-box {
+	height: 50%;
+}
 
 .splash-btn {
 	height: 4em;
