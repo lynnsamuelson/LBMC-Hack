@@ -77,6 +77,14 @@ app.factory('userFactory', function($location, $q, $http) {
 		});
 	};
 
+	const editUser = (userObj) => {
+
+	};
+
+	const deleteUser = (userId) => {
+
+	};
+
 	return {
 		loginUser,
 		logoutUser,
@@ -84,7 +92,9 @@ app.factory('userFactory', function($location, $q, $http) {
 		checkAdmin,
 		getCurrentUser,
 		getAllUsers,
-		addUser
+		addUser,
+		editUser,
+		deleteUser
 	};
 
 });
