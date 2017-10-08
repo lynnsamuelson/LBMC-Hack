@@ -2,11 +2,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-6">
-			<div class="lg-button home-box">
-				<p class="purge-text">There are communications in the databse that are more than 3 years old.  Would you like to purge them now?</p>
+			<div class="lg-button home-box" ng-show="showPurge">
+				<p class="purge-text">There are communications in the database that are more than 3 years old.  Would you like to purge them now?</p>
 			</div>
-			<div class="login-button mx-auto text-center home-box">
-					<a ng-href="#!/upload" class="btn splash-btn" role="button">Purge</a>
+			<div class="login-button mx-auto text-center home-box" ng-show="showPurge">
+					<a ng-click="purgeData()" class="btn splash-btn" role="button">Purge</a>
 				</div>
 		</div>
 		<div class="col-6">
