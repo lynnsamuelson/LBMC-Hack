@@ -1,0 +1,42 @@
+[
+	{
+		"firstName" : "Ansel",
+		"lastName" : "Robertson",
+		"email" : "admin@tnachieves.org",
+		"password" : "123456",
+		"isAdmin" : true,
+		"id" : "123456"
+	},
+	{
+		"firstName" : "Kelly",
+		"lastName" : "Jephson",
+		"email" : "admin2@tnachieves.org",
+		"password" : "123456",
+		"isAdmin" : true,
+		"id" : "234567"
+	},
+	{
+		"firstName" : "Randy",
+		"lastName" : "Sherburne",
+		"email" : "user@tnachieves.org",
+		"password" : "123456",
+		"isAdmin" : false,
+		"id" : "345678"
+	},
+	{
+		"firstName" : "Jessica",
+		"lastName" : "Townsend",
+		"email" : "user2@tnachieves.org",
+		"password" : "123456",
+		"isAdmin" : false,
+		"id" : "456789"
+	},
+	{
+		"firstName" : "Lisa",
+		"lastName" : "Swindhurst",
+		"email" : "user3@tnachieves.org",
+		"password" : "123456",
+		"isAdmin" : false,
+		"id" : "567890"
+	}
+]

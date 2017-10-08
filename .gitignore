@@ -5,5 +5,4 @@ css/
 dist/
 lib/node_modules
 lib/.sass-cache
-data/
 lib/package-lock.json
