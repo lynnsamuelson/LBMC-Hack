@@ -63,13 +63,28 @@ app.factory('userFactory', function($location, $q, $http) {
 		});
 	};
 
+	const addUser = (newUserObj) => {
+		//final user post can be commented out when DB is ready, change temporary url
+		// let newObj = angular.toJson(newUserObj);
+		// return $http.post(url, newObj)
+		// 	.then(success => success)
+		// 	.catch(error => console.log('error from addUser', error));
+
+		//delete this when db is ready
+		return $q((resolve, reject) => {
+			let newObj = angular.toJson(newUserObj);
+			console.log('newObj', newObj);
+		});
+	};
+
 	return {
 		loginUser,
 		logoutUser,
 		checkAuthenticated,
 		checkAdmin,
 		getCurrentUser,
-		getAllUsers
+		getAllUsers,
+		addUser
 	};
 
 });
