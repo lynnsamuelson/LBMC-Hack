@@ -2,6 +2,7 @@
 
 const app = angular.module('tnaComm', ['ngRoute']);
 
+//checks to see if user is authorized before routing to internal views.
 let isAuth = (userFactory) => new Promise ((resolve, reject) => {
 	userFactory.checkAuthenticated()
 		.then((userExists) => {
@@ -13,14 +14,13 @@ let isAuth = (userFactory) => new Promise ((resolve, reject) => {
 		});
 });
 
+//checks to see if user is an administratoe before routing to administrator views.
 let isAdmin = (userFactory) => new Promise ((resolve, reject) => {
 	userFactory.checkAdmin()
 		.then((userIsAdmin) => {
 			if (userIsAdmin) {
-				console.log('isAdmin is resolving');
 				resolve();
 			} else {
-				console.log('isAdmin is rejecting');
 				reject();
 			}
 		});
@@ -43,7 +43,8 @@ app.config(($routeProvider) => {
   })
 	.when('/search', {
 		templateUrl: 'partials/search-view.html',
-		controller: 'searchViewCtrl'
+		controller: 'searchViewCtrl',
+		resolve: {isAuth}
   })
 	.when('/upload', {
 		templateUrl: 'partials/upload-view.html',
@@ -52,7 +53,13 @@ app.config(($routeProvider) => {
 	})
 	.when('/results',{
 		templateUrl: 'partials/search-results.html',
-		controller: 'resultsCtrl'
+		controller: 'resultsCtrl',
+		resolve: {isAuth}
+	})
+	.when('user-admin', {
+		templateUrl: 'partials/user-admin.html',
+		controller: 'userAdminCtrl',
+		resolve: {isAdmin}
 	})
 	.otherwise('/');
 });

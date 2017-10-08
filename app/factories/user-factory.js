@@ -42,6 +42,7 @@ app.factory('userFactory', function($location, $q, $http) {
 		});
 	};
 
+	//checks to see if user is an administrator, calls true or false from currentUser object
 	const checkAdmin = () => {
 		return new Promise((resolve, reject) => {
 			resolve(currentUser.isAdmin);
