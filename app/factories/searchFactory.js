@@ -30,7 +30,20 @@ app.factory("searchFactory", function($q, $http, $location){
      });
   }
   
+  function searchMessagesById(contactId) {
+    console.log("contact id?", contactId);
+    return $q( (resolve, reject) => {
+      $http.get(`http://localhost:3000/messages/${contactId}`)
+      .then( (data) => {
+        console.log("records for that student:", data);
+        resolve(data);
+      })
+      .catch( (err) => {
+        reject(err);
+      });
+    });
+}
+
   
-  
-  return {searchAPI};
+  return {searchAPI, searchMessagesById};
 });
