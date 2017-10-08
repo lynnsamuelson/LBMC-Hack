@@ -54,12 +54,22 @@ app.factory('userFactory', function($location, $q, $http) {
 		return currentUser;
 	};
 
+	//returns all DB users
+	const getAllUsers = () => {
+		return $q((resolve, reject) => {
+			$http.get(url)
+				.then(users => resolve(users.data))
+				.catch(error => console.log('error from getAllUsers', error));
+		});
+	};
+
 	return {
 		loginUser,
 		logoutUser,
 		checkAuthenticated,
 		checkAdmin,
-		getCurrentUser
+		getCurrentUser,
+		getAllUsers
 	};
 
 });

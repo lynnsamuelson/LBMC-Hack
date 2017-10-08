@@ -58,7 +58,12 @@ app.config(($routeProvider) => {
 	})
 	.when('/user-admin', {
 		templateUrl: 'partials/user-admin.html',
-		controller: 'userAdminCtrl',
+		controller: 'userAdminCtrl'
+		// resolve: {isAdmin}   //temporarily diabled
+	})
+	.when('/user-add-edit', {
+		templateUrl: 'partials/user-add-edit.html',
+		controller: 'userAddEditCtrl',
 		resolve: {isAdmin}
 	})
 	.otherwise('/');
