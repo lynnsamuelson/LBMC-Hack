@@ -19,6 +19,15 @@ let getMessagesByContactId = (req, res, next) => {
 	.catch( (err) => next(err));
 };
 
+let uploadFileFromWeb = (req, res, next) => {
+	uploadFileToDB(req.params.file)
+	.then( (results) => {
+		//do something with results-- send to front end for usable form, they will just be JSON so far
+		res.status(200).json(results);
+	})
+	.catch( (err) => next(err));
+};
+
 let prepData = prepEmailData;
 
 module.exports = { getMessagesByContactId, prepData, postEmailData }
