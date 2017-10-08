@@ -1,5 +1,5 @@
 'use strict';
-const { insertEmailsIntoDB, searchByContactId, prepEmailData } = require('./Message.js');
+const { insertEmailsIntoDB, searchByContactId, prepEmailData, uploadFileToDB } = require('./Message.js');
 
 let postEmailData = (req, res, next) => {
 	insertEmailsIntoDB(req.body)
@@ -30,4 +30,4 @@ let uploadFileFromWeb = (req, res, next) => {
 
 let prepData = prepEmailData;
 
-module.exports = { getMessagesByContactId, prepData, postEmailData }
+module.exports = { getMessagesByContactId, prepData, postEmailData, uploadFileFromWeb }

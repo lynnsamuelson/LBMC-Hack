@@ -243,82 +243,83 @@ let csvMessageObjs = [
 
 
 // //POST from upload, iterate over each of the items in the parsed array of objects:
-// module.exports.insertMessagesIntoDB = (csvMessageObjs) => {
-//     csvEmailObjs.forEach( (messageObj) => {
-//         db.run(`INSERT INTO messages VALUES (null, 
-//         	'${messageObj.messageType}', 
-//         	'${messageObj.contactId}', 
-//         	'${messageObj.clicked}', 
-//         	'${messageObj.contact}', 
-//         	'${messageObj.contactRecordType}', 
-//         	'${messageObj.createdDate}', 
-//         	'${messageObj.dateBounced}', 
-//         	'${messageObj.dateOpened}', 
-//         	'${messageObj.dateSent}', 
-//         	'${messageObj.dateUnsubscribed}', 
-//         	'${messageObj.deleted}', 
-//         	'${messageObj.inboundNumber}', 
-//         	'${messageObj.mobileNumber}', 
-//         	'${messageObj.email}', 
-//         	'${messageObj.emailName}', 
-//         	'${messageObj.fromAddress}', 
-//         	'${messageObj.fromName}', 
-//         	'${messageObj.hardBounce}', 
-//         	${messageObj.numberOfTotalClicks}, 
-//         	${messageObj.numberOfUniqueClicks}, 
-//         	'${messageObj.opened}', 
-//         	'${messageObj.relatedStudentContactId}', 
-//         	'${messageObj.softBounce}', 
-//         	'${messageObj.subjectLine}',
-//         	'${messageObj.SMS}',
-//         	'${messageObj.campaign}',
-//         	'${messageObj.deliveryStatus}',
-//         	'${messageObj.disableSMSOnTrigger}',
-//         	'${messageObj.sentStatus}',
-//     	)`);
-//     });
-// }
+module.exports.insertMessagesIntoDB = (csvMessageObjs) => {
+    csvEmailObjs.forEach( (messageObj) => {
+        db.run(`INSERT INTO messages VALUES (null, 
+        	'${messageObj.messageType}', 
+        	'${messageObj.contactId}', 
+        	'${messageObj.clicked}', 
+        	'${messageObj.contact}', 
+        	'${messageObj.contactRecordType}', 
+        	'${messageObj.createdDate}', 
+        	'${messageObj.dateBounced}', 
+        	'${messageObj.dateOpened}', 
+        	'${messageObj.dateSent}', 
+        	'${messageObj.dateUnsubscribed}', 
+        	'${messageObj.deleted}', 
+        	'${messageObj.inboundNumber}', 
+        	'${messageObj.mobileNumber}', 
+        	'${messageObj.email}', 
+        	'${messageObj.emailName}', 
+        	'${messageObj.fromAddress}', 
+        	'${messageObj.fromName}', 
+        	'${messageObj.hardBounce}', 
+        	${messageObj.numberOfTotalClicks}, 
+        	${messageObj.numberOfUniqueClicks}, 
+        	'${messageObj.opened}', 
+        	'${messageObj.relatedStudentContactId}', 
+        	'${messageObj.softBounce}', 
+        	'${messageObj.subjectLine}',
+        	'${messageObj.SMS}',
+        	'${messageObj.campaign}',
+        	'${messageObj.deliveryStatus}',
+        	'${messageObj.disableSMSOnTrigger}',
+        	'${messageObj.sentStatus}'
+    	)`);
+    });
+}
 
 
 
 //uncommenting this will call this function and input those objects above
 // 	module.exports.insertEmailsIntoDB(csvEmailObjs);
-// 	module.exports.insertMessagesIntoDB(csvMessageObjs);
+	// module.exports.insertMessagesIntoDB(csvMessageObjs);
 // });
 
 module.exports.searchByContactId = (contactId) => {
 	return new Promise( (resolve, reject) => {
-		db.all(`SELECT * FROM EmailFiles WHERE contactId = "${contactId}"`, (err, emailsData) => {
+		db.all(`SELECT * FROM Messages WHERE contactId = "${contactId}"`, (err, messagesData) => {
 	        if (err) return reject(err);//if error, pass on to error handler
-	        resolve(emailsData);
+	        resolve(messagesData);
 		});
 	});
 };
 
 
 module.exports.uploadFileToDB = (file) => {
+	console.log("file going in", file);
 	return new Promise( (resolve, reject) => {
 		db.all(`INSERT INTO EmailFiles VALUES (null, 
-	        	'${emailObj.clicked}', 
-	        	'${emailObj.contact}', 
-	        	'${emailObj.contactId}', 
-	        	'${emailObj.contactRecordType}', 
-	        	'${emailObj.dateBounced}', 
-	        	'${emailObj.dateOpened}', 
-	        	'${emailObj.dateSent}', 
-	        	'${emailObj.dateUnsubscribed}', 
-	        	'${emailObj.deleted}', 
-	        	'${emailObj.email}', 
-	        	'${emailObj.emailName}', 
-	        	'${emailObj.fromAddress}', 
-	        	'${emailObj.fromName}', 
-	        	'${emailObj.hardBounce}', 
-	        	${emailObj.numberOfTotalClicks}, 
-	        	${emailObj.numberOfUniqueClicks}, 
-	        	'${emailObj.opened}', 
-	        	'${emailObj.relatedStudentContactId}', 
-	        	'${emailObj.softBounce}', 
-	        	'${emailObj.subjectLine}')`,
+	        	'${file.contactId}', 
+	        	'${file.clicked}', 
+	        	'${file.contact}', 
+	        	'${file.contactRecordType}', 
+	        	'${file.dateBounced}', 
+	        	'${file.dateOpened}', 
+	        	'${file.dateSent}', 
+	        	'${file.dateUnsubscribed}', 
+	        	'${file.deleted}', 
+	        	'${file.email}', 
+	        	'${file.emailName}', 
+	        	'${file.fromAddress}', 
+	        	'${file.fromName}', 
+	        	'${file.hardBounce}', 
+	        	${file.numberOfTotalClicks}, 
+	        	${file.numberOfUniqueClicks}, 
+	        	'${file.opened}', 
+	        	'${file.relatedStudentContactId}', 
+	        	'${file.softBounce}', 
+	        	'${file.subjectLine}')`,
 	    	 (err, successMessage) => {
 	        if (err) return reject(err);//if error, pass on to error handler
 	        resolve(successMessage);

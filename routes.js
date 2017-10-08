@@ -3,7 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { postEmailData, getMessagesByContactId } = require('./messageCtrl.js');
+const { postEmailData, getMessagesByContactId, uploadFileFromWeb } = require('./messageCtrl.js');
 const { sayHello } = require('./helloCtrl.js');
 
 router.get('/messages/:id', getMessagesByContactId); //if this route, get all emails attached to a certain id
