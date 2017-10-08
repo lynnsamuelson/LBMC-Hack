@@ -13,6 +13,19 @@ let isAuth = (userFactory) => new Promise ((resolve, reject) => {
 		});
 });
 
+let isAdmin = (userFactory) => new Promise ((resolve, reject) => {
+	userFactory.checkAdmin()
+		.then((userIsAdmin) => {
+			if (userIsAdmin) {
+				console.log('isAdmin is resolving');
+				resolve();
+			} else {
+				console.log('isAdmin is rejecting');
+				reject();
+			}
+		});
+});
+
 
 app.config(($routeProvider) => {
 	$routeProvider
@@ -25,8 +38,8 @@ app.config(($routeProvider) => {
 	})
 	.when('/home', {
 		templateUrl: 'partials/home.html',
-		controller: 'purgeCtrl'
-		// resolve: {isAuth}
+		controller: 'purgeCtrl',
+		resolve: {isAuth}
   })
 	.when('/search', {
 		templateUrl: 'partials/search-view.html',

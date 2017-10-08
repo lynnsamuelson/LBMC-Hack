@@ -18,8 +18,8 @@ app.factory('userFactory', function($location, $q, $http) {
 							currentUser = item;
 							resolve(item);
 						}
-						resolve(null);
 					});
+					resolve(null);
 				})
 				.catch(error => reject(error));
 		});
@@ -34,11 +34,17 @@ app.factory('userFactory', function($location, $q, $http) {
 	//checks for value in currentUser, resolves true or false
 	const checkAuthenticated = () => {
 		return new Promise((resolve, reject) => {
-			if (currentUser === 'example') {
+			if (currentUser !== null) {
 				resolve(true);
 			} else {
 				resolve(false);
 			}
+		});
+	};
+
+	const checkAdmin = () => {
+		return new Promise((resolve, reject) => {
+			resolve(currentUser.isAdmin);
 		});
 	};
 
@@ -51,6 +57,7 @@ app.factory('userFactory', function($location, $q, $http) {
 		loginUser,
 		logoutUser,
 		checkAuthenticated,
+		checkAdmin,
 		getCurrentUser
 	};
 
