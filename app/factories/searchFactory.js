@@ -1,6 +1,8 @@
 "use strict";
 
 app.factory("searchFactory", function($q, $http, $location){
+  let holdResultArrObj = [];
+
   function searchAPI(searchObjNotFormatted){
     return $q((resolve, reject)=>{
       //switch undefined to null  -- for ease of use in sql query 
@@ -23,20 +25,21 @@ app.factory("searchFactory", function($q, $http, $location){
       console.log('searchObj in Factory', searchObj);
 
       // make call to Api using formatted Object -- searchObj
-      // $http.get(`apiCall.url/${searchObj}`)
-      // .then((data)=>{
-      //   $location.url("#!/results");
-      // });
+      searchMessagesById(searchObj);
      });
   }
   
-  function searchMessagesById(contactId) {
+  function searchMessagesById(searchObj) {
+    let contactId = searchObj.searchContactID;
     console.log("contact id?", contactId);
     return $q( (resolve, reject) => {
       $http.get(`http://localhost:3000/messages/${contactId}`)
       .then( (data) => {
         console.log("records for that student:", data);
-        resolve(data);
+        let resultsArrObj = data.data;
+        searchResultsArray(resultsArrObj);
+        resolve();
+        $location.url("#!/results");
       })
       .catch( (err) => {
         reject(err);
@@ -44,6 +47,15 @@ app.factory("searchFactory", function($q, $http, $location){
     });
 }
 
+function searchResultsArray(tempResultArrObj){
+  holdResultArrObj = tempResultArrObj;
+  return holdResultArrObj;
+}
+
+function searchResultsDetail() {
   
-  return {searchAPI, searchMessagesById};
+}
+
+  
+  return {searchAPI, searchResultsArray};
 });
