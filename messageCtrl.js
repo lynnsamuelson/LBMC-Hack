@@ -1,5 +1,5 @@
 'use strict';
-const { insertEmailsIntoDB, searchByContactId, prepEmailData } = require('./Message.js');
+const { insertEmailsIntoDB, searchByContactId, prepEmailData, uploadFileToDB } = require('./Message.js');
 
 let postEmailData = (req, res, next) => {
 	insertEmailsIntoDB(req.body)
@@ -20,6 +20,8 @@ let getMessagesByContactId = (req, res, next) => {
 };
 
 let uploadFileFromWeb = (req, res, next) => {
+	console.log(' messageCtrlreq.params.file', req.params.file);
+	
 	uploadFileToDB(req.params.file)
 	.then( (results) => {
 		//do something with results-- send to front end for usable form, they will just be JSON so far
@@ -30,4 +32,4 @@ let uploadFileFromWeb = (req, res, next) => {
 
 let prepData = prepEmailData;
 
-module.exports = { getMessagesByContactId, prepData, postEmailData }
+module.exports = { getMessagesByContactId, prepData, postEmailData, uploadFileFromWeb };

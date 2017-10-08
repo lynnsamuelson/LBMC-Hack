@@ -52,10 +52,16 @@ function searchResultsArray(tempResultArrObj){
   return holdResultArrObj;
 }
 
-function searchResultsDetail() {
-  
+function searchResultsDetail(uniqueMessageID) {
+  holdResultArrObj.forEach((obj)=>{
+    // CHANGE obj.email_id TO WHATEVER THE UNIQUE ID WILL BE COMMING FROM DB
+    if (obj.email_id === uniqueMessageID){
+      return obj;
+    }
+  });
+
 }
 
   
-  return {searchAPI, searchResultsArray};
+  return {searchAPI, searchResultsArray, searchResultsDetail};
 });

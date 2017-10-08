@@ -282,12 +282,8 @@ let csvMessageObjs = [
 
 
 //uncommenting this will call this function and input those objects above
-<<<<<<< HEAD
-	// module.exports.insertEmailsIntoDB(csvEmailObjs);
-=======
 // 	module.exports.insertEmailsIntoDB(csvEmailObjs);
 // 	module.exports.insertMessagesIntoDB(csvMessageObjs);
->>>>>>> c99e180a6e8ee9b4dcd4bb139ec4438cf58eb8b3
 // });
 
 module.exports.searchByContactId = (contactId) => {
@@ -325,7 +321,7 @@ module.exports.uploadFileToDB = (file) => {
 	        	'${emailObj.subjectLine}')`,
 	    	 (err, successMessage) => {
 	        if (err) return reject(err);//if error, pass on to error handler
-	        resolve(successMessage);
+	        resolve("upload success");
 		});
 	});
 };
