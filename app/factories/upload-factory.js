@@ -10,8 +10,7 @@ app.factory('uploadFactory', function ($q, $http) {
 			// STILL NEEDS TO BE DONE -- add upload object to taggedUploadArrObj[1] and add csv file type to obj at taggedUploadArrObj[0]
 			let taggedUploadArrObj = uploadObj;
 			console.log("uploadObj", taggedUploadArrObj);
-			uploadToApi(taggedUploadArrObj)
-			.then();
+			uploadToApi(taggedUploadArrObj);
 
 		});
 	};

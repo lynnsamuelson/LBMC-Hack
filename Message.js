@@ -298,10 +298,12 @@ module.exports.searchByContactId = (contactId) => {
 
 module.exports.uploadFileToDB = (file) => {
 	console.log("file going in", file);
+	console.log("file.Clicked", file.Clicked);
+	//try importing it in the way you converted them with bracket notation above!
 	return new Promise( (resolve, reject) => {
 		db.all(`INSERT INTO EmailFiles VALUES (null, 
-	        	'${file.contactId}', 
-	        	'${file.clicked}', 
+	        	'${file.['Contact ID']}', 
+	        	'${file.Clicked}', 
 	        	'${file.contact}', 
 	        	'${file.contactRecordType}', 
 	        	'${file.dateBounced}', 
