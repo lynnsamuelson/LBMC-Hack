@@ -20,7 +20,6 @@ let getMessagesByContactId = (req, res, next) => {
 };
 
 let uploadFileFromWeb = (req, res, next) => {
-	console.log("req body", req.body);
 	uploadFileToDB(req.body)
 	.then( (results) => {
 		//do something with results-- send to front end for usable form, they will just be JSON so far

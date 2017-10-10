@@ -105,7 +105,7 @@ let csvMessageObjs = [
 	},
 ]
 //Methods for the EMAIL data
-//this will not need to be in the production version as the DB will already exist! Just for my build purposes -EL
+// //this will not need to be in the production version as the DB will already exist! Just for my build purposes -EL
 
 // db.serialize( () => {
 
@@ -135,11 +135,7 @@ let csvMessageObjs = [
 // 	    relatedStudentContactId TEXT, 
 // 	    softBounce TEXT NOT NULL, 
 // 	    subjectLine TEXT
-
-
 // 	)`);
-
-
 
 
 // module.exports.prepEmailData = (data) => {
@@ -172,31 +168,31 @@ let csvMessageObjs = [
 // };
 
 // //POST from upload, iterate over each of the items in the parsed array of objects:
-// module.exports.insertEmailsIntoDB = (csvEmailObjs) => {
-//     csvEmailObjs.forEach( (emailObj) => {
-//         db.run(`INSERT INTO EmailFiles VALUES (null, 
-//         	'${emailObj.clicked}', 
-//         	'${emailObj.contact}', 
-//         	'${emailObj.contactId}', 
-//         	'${emailObj.contactRecordType}', 
-//         	'${emailObj.dateBounced}', 
-//         	'${emailObj.dateOpened}', 
-//         	'${emailObj.dateSent}', 
-//         	'${emailObj.dateUnsubscribed}', 
-//         	'${emailObj.deleted}', 
-//         	'${emailObj.email}', 
-//         	'${emailObj.emailName}', 
-//         	'${emailObj.fromAddress}', 
-//         	'${emailObj.fromName}', 
-//         	'${emailObj.hardBounce}', 
-//         	${emailObj.numberOfTotalClicks}, 
-//         	${emailObj.numberOfUniqueClicks}, 
-//         	'${emailObj.opened}', 
-//         	'${emailObj.relatedStudentContactId}', 
-//         	'${emailObj.softBounce}', 
-//         	'${emailObj.subjectLine}')`);
-//     });
-// }
+module.exports.insertEmailsIntoDB = (csvEmailObjs) => {
+    csvEmailObjs.forEach( (emailObj) => {
+        db.run(`INSERT INTO EmailFiles VALUES (null, 
+        	'${emailObj.clicked}', 
+        	'${emailObj.contact}', 
+        	'${emailObj.contactId}', 
+        	'${emailObj.contactRecordType}', 
+        	'${emailObj.dateBounced}', 
+        	'${emailObj.dateOpened}', 
+        	'${emailObj.dateSent}', 
+        	'${emailObj.dateUnsubscribed}', 
+        	'${emailObj.deleted}', 
+        	'${emailObj.email}', 
+        	'${emailObj.emailName}', 
+        	'${emailObj.fromAddress}', 
+        	'${emailObj.fromName}', 
+        	'${emailObj.hardBounce}', 
+        	${emailObj.numberOfTotalClicks}, 
+        	${emailObj.numberOfUniqueClicks}, 
+        	'${emailObj.opened}', 
+        	'${emailObj.relatedStudentContactId}', 
+        	'${emailObj.softBounce}', 
+        	'${emailObj.subjectLine}')`);
+    });
+}
 
 
 
@@ -281,9 +277,9 @@ module.exports.insertMessagesIntoDB = (csvMessageObjs) => {
 
 
 
-//uncommenting this will call this function and input those objects above
-// 	module.exports.insertEmailsIntoDB(csvEmailObjs);
-	// module.exports.insertMessagesIntoDB(csvMessageObjs);
+// // //uncommenting this will call this function and input those objects above
+	module.exports.insertEmailsIntoDB(csvEmailObjs);
+// // 	// module.exports.insertMessagesIntoDB(csvMessageObjs);
 // });
 
 module.exports.searchByContactId = (contactId) => {
@@ -296,36 +292,38 @@ module.exports.searchByContactId = (contactId) => {
 };
 
 
-module.exports.uploadFileToDB = (file) => {
-	console.log("file going in", file);
-	console.log("file.Clicked", file.Clicked);
-	//try importing it in the way you converted them with bracket notation above!
+module.exports.uploadFileToDB = (fileObjsArr) => {
+	console.log("file going in");
+	console.log("file.contactid", fileObjsArr[0]['Contact ID']);
 	return new Promise( (resolve, reject) => {
-		db.all(`INSERT INTO EmailFiles VALUES (null, 
-	        	'${file.['Contact ID']}', 
+		fileObjsArr.forEach( (file) => {
+		
+			db.all(`INSERT INTO EmailFiles VALUES (null, 
 	        	'${file.Clicked}', 
-	        	'${file.contact}', 
-	        	'${file.contactRecordType}', 
-	        	'${file.dateBounced}', 
-	        	'${file.dateOpened}', 
-	        	'${file.dateSent}', 
-	        	'${file.dateUnsubscribed}', 
-	        	'${file.deleted}', 
-	        	'${file.email}', 
-	        	'${file.emailName}', 
-	        	'${file.fromAddress}', 
-	        	'${file.fromName}', 
-	        	'${file.hardBounce}', 
-	        	${file.numberOfTotalClicks}, 
-	        	${file.numberOfUniqueClicks}, 
-	        	'${file.opened}', 
-	        	'${file.relatedStudentContactId}', 
-	        	'${file.softBounce}', 
-	        	'${file.subjectLine}')`,
+	        	'${file.Contact}', 
+	        	'${file['Contact ID']}', 
+	        	'${file["Contact Record Type"]}', 
+	        	'${file["Date Bounced"]}', 
+	        	'${file['Date Opened']}', 
+	        	'${file["Date Sent"]}', 
+	        	'${file["Date Unsubscribed"]}', 
+	        	'${file.Deleted}', 
+	        	'${file.Email}', 
+	        	'${file["Email Name"]}', 
+	        	'${file['From Address']}', 
+	        	'${file["From Name"]}', 
+	        	'${file["Hard Bounce"]}', 
+	        	${file["Number Of Total Clicks"]}, 
+	        	${file["Number Of Unique Clicks"]}, 
+	        	'${file.Opened}', 
+	        	'${file["Related Student Contact ID"]}', 
+	        	'${file["Soft Bounce"]}', 
+	        	'${file["Subject Line"]}')`,
 	    	 (err, successMessage) => {
 	        if (err) return reject(err);//if error, pass on to error handler
 	        resolve(successMessage);
 		});
+	})
 	});
 };
 
