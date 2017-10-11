@@ -107,7 +107,7 @@ let csvMessageObjs = [
 //Methods for the EMAIL data
 //this will not need to be in the production version as the DB will already exist! Just for my build purposes -EL
 
-db.serialize( () => {
+// db.serialize( () => {
 
 // // // keeping these commented out pieces for generating the table for order reference -- in the INPUT stage, the order matters a lot
 
@@ -205,40 +205,40 @@ db.serialize( () => {
 
 
 // //start LS make new table
-db.run(`DROP TABLE IF EXISTS Messages`);
+// db.run(`DROP TABLE IF EXISTS Messages`);
 
-	db.run(`CREATE TABLE IF NOT EXISTS Messages(
-	    message_id INTEGER PRIMARY KEY NOT NULL,
-	    messageType TEXT NOT NULL,
-	    contactId TEXT NOT NULL, 
-	    clicked TEXT NOT NULL,
-	    contact TEXT NOT NULL,
-	    contactRecordType TEXT NOT NULL, 
-	    createdDate TEXT,
-	    dateBounced DATE, 
-	    dateOpened DATE, 
-	    dateSent DATE NOT NULL, 
-	    dateUnsubscribed DATE, 
-	    deleted TEXT NOT NULL, 
-	    inboundNumber TEXT,
-	    mobileNumber TEXT,
-	    email TEXT NOT NULL, 
-	    emailName TEXT NOT NULL, 
-	    fromAddress TEXT, 
-	    fromName TEXT NOT NULL, 
-	    hardBounce TEXT NOT NULL, 
-	    numberOfTotalClicks INTEGER NOT NULL, 
-	    numberOfUniqueClicks INTEGER NOT NULL, 
-	    opened TEXT NOT NULL, 
-	    relatedStudentContactId TEXT, 
-	    softBounce TEXT NOT NULL, 
-	    subjectLine TEXT,
-	    SMS TEXT,
-	    campaign TEXT,
-	    deliveryStatus TEXT,
-	    disableSMSOnTrigger TEXT,
-	    sentStatus TEXT
-	)`);
+// 	db.run(`CREATE TABLE IF NOT EXISTS Messages(
+// 	    message_id INTEGER PRIMARY KEY NOT NULL,
+// 	    messageType TEXT NOT NULL,
+// 	    contactId TEXT NOT NULL, 
+// 	    clicked TEXT NOT NULL,
+// 	    contact TEXT NOT NULL,
+// 	    contactRecordType TEXT NOT NULL, 
+// 	    createdDate TEXT,
+// 	    dateBounced DATE, 
+// 	    dateOpened DATE, 
+// 	    dateSent DATE NOT NULL, 
+// 	    dateUnsubscribed DATE, 
+// 	    deleted TEXT NOT NULL, 
+// 	    inboundNumber TEXT,
+// 	    mobileNumber TEXT,
+// 	    email TEXT NOT NULL, 
+// 	    emailName TEXT NOT NULL, 
+// 	    fromAddress TEXT, 
+// 	    fromName TEXT NOT NULL, 
+// 	    hardBounce TEXT NOT NULL, 
+// 	    numberOfTotalClicks INTEGER NOT NULL, 
+// 	    numberOfUniqueClicks INTEGER NOT NULL, 
+// 	    opened TEXT NOT NULL, 
+// 	    relatedStudentContactId TEXT, 
+// 	    softBounce TEXT NOT NULL, 
+// 	    subjectLine TEXT,
+// 	    SMS TEXT,
+// 	    campaign TEXT,
+// 	    deliveryStatus TEXT,
+// 	    disableSMSOnTrigger TEXT,
+// 	    sentStatus TEXT
+// 	)`);
 
 
 
@@ -283,8 +283,8 @@ module.exports.insertMessagesIntoDB = (csvMessageObjs) => {
 
 //uncommenting this will call this function and input those objects above
 // 	module.exports.insertEmailsIntoDB(csvEmailObjs);
-	module.exports.insertMessagesIntoDB(csvMessageObjs);
-});
+	// module.exports.insertMessagesIntoDB(csvMessageObjs);
+// });
 
 module.exports.searchByContactId = (contactId) => {
 	return new Promise( (resolve, reject) => {
@@ -321,8 +321,8 @@ module.exports.uploadFileToDB = (file) => {
 	        	'${file.softBounce}', 
 	        	'${file.subjectLine}')`,
 	    	 (err, successMessage) => {
-	        if (err) return reject(err); //if error, pass on to error handler
-	        resolve("upload success");
+	        if (err) return reject(err);//if error, pass on to error handler
+	        resolve(successMessage);
 		});
 	});
 };
