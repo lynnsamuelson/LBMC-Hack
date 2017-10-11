@@ -1,0 +1,13 @@
+<div ng-include="'partials/nav.html'"></div>
+<div class="container">
+	<div class="header mt-5 mb-5">
+	  <h3>Archive Search</h3>
+	</div>
+  <div>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-2" type="text" placeholder="Search Contact ID" size="25" autofocus="true" aria-label="Search" ng-keypress="searchFunct($event)" ng-model="searchInputContactID"> 
+      <input class="form-control mr-2" type="text" placeholder="Search Email Address" size="35" autofocus="true" aria-label="Search" ng-keypress="searchFunct($event)" ng-model="searchInputEmailAddr">
+      <input class="form-control mr-2" type="text" placeholder="Search Related Contact ID" size="25" autofocus="true" aria-label="Search" ng-keypress="searchFunct($event)" ng-model="searchInputRelContactID">
+    </form>
+  </div>
+</div>

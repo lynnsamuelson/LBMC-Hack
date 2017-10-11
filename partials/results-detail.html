@@ -1,0 +1,15 @@
+<div ng-include="'partials/nav.html'"></div>
+<div>
+  <h3>
+    Results Detail
+  </h3>
+  <div class="row">
+    <div class="results-detail-custom results-email col-sm-5" ng-repeat="keyNames in objDetailKeyNames track by $index">
+      <p>{{keyNames}}</p>
+    </div>
+    <div class="results-detail-custom results-email col-sm-5" ng-repeat="keyValues in objDetailKeyValues track by $index">
+      <p>{{keyValues}}</p>
+    </div>
+  </div>
+ 
+</div>

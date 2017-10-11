@@ -1,0 +1,28 @@
+<div ng-include="'partials/nav.html'"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<div class="lg-button home-box" ng-show="showPurge">
+				<p class="purge-text">There are communications in the database that are more than 3 years old.  Would you like to purge them now?</p>
+				<button ng-click="purgeData()">Purge Data</button>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="lg-button">
+				<div class="login-button mx-auto text-center">
+					<a ng-href="#!/search" class="btn splash-btn" role="button">Search Archive</a>
+				</div>
+			</div>
+			<div class="lg-button">
+				<div class="login-button mx-auto text-center">
+					<a ng-href="#!/upload" class="btn splash-btn" role="button">Upload Email Data</a>
+				</div>
+			</div>
+			<div class="lg-button" ng-show="showAdmin">
+				<div class="login-button mx-auto text-center">
+					<a ng-href="#!/user-admin" class="btn splash-btn" role="button">Manage Users</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

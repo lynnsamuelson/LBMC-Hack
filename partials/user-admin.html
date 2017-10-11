@@ -1,0 +1,38 @@
+<div ng-include="'partials/nav.html'"></div>
+<div class="container">
+	<div class="row mt-5">
+		<div class="col-6">
+			<h2>Manage Users</h2>
+		</div>
+		<div class="col-6">
+			<div class="login-button">
+				<button type="button" ng-click="addUser()" class="btn btn-primary btn-lg login-btn">Add New User</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>First Name:</th>
+						<th>Last Name:</th>
+						<th>Email:</th>
+						<th> </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in allUsers">
+						<td>{{user.firstName}}</td>
+						<td>{{user.lastName}}</td>
+						<td>{{user.email}}</td>
+						<td>
+							<button ng-click="editUser(user.id)">Edit User</button>
+							<button ng-click="deleteUser(user.id)">Delete User</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

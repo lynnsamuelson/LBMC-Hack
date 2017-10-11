@@ -1,0 +1,34 @@
+<!-- <div ng-show="!resultsDone"><md-progress-linear md-mode="indeterminate"></md-progress-linear></div> -->
+<!-- ng-show="resultsDone" -->
+<div ng-include="'partials/nav.html'"></div>
+<div>
+  <div class="row list-title-custom"> <h2>Search Result</h2></div>
+  <div class="row results-width">
+    <table class="table table-sm table-striped table-hover">
+      <thead>
+        <th ng-click="sort('contactID')">Contact ID<i class="fa fa-sort" ng-show="sortKey=='contactID'" ng-class="{'fa fa-sort-desc':reverse,'fa fa-sort-asc':!reverse}" aria-hidden="true"></i>
+        </th>
+        <th ng-click="sort('contactName')">Contact Name<i class="fa fa-sort" ng-show="sortKey=='contactName'" ng-class="{'fa fa-sort-desc':reverse,'fa fa-sort-asc':!reverse}" aria-hidden="true"></i>
+        </th>
+        <th ng-click="sort('dateSent')">Date Sent<i class="fa fa-sort" ng-show="sortKey=='dateSent'" ng-class="{'fa fa-sort-desc':reverse,'fa fa-sort-asc':!reverse}" aria-hidden="true"></i>
+        </th>
+        <th ng-click="sort('createdDate')">Created Date<i class="fa fa-sort" ng-show="sortKey=='createdDate'" ng-class="{'fa fa-sort-desc':reverse,'fa fa-sort-asc':!reverse}" aria-hidden="true"></i>
+        </th>
+        <th>Subject</th>
+        <th ng-click="sort('messageType')">Message Type<i class="fa fa-sort" ng-show="sortKey=='messageType'" ng-class="{'fa fa-sort-desc':reverse,'fa fa-sort-asc':!reverse}" aria-hidden="true"></i>
+        </th>
+      </thead>
+      <tbody>
+        <tr class="song-object" database-id="{{contactObj.message_id}}" ng-repeat="contactObj in arrayOfObj | orderBy:sortKey:reverse">
+          <td class="contactID">{{contactObj.contactId}}</td>
+          <td class="contactName">{{contactObj.contact}}</td>
+          <td class="dateSent">{{contactObj.dateSent}}</td>
+          <td class="createdDate">{{contactObj.createdDate}}</td>
+          <td class="subjectLine">{{contactObj.subjectLine}}</td>
+          <td class="messageType">{{contactObj.messageType}}</td>
+          <td><a href="" ng-click="detailFunction($event)">Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

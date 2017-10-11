@@ -1,0 +1,31 @@
+<div class="container" ng-control="userCtrl">
+	<div class="row mt-5">
+		<div class="col-10">
+			<img src="img/logo-color.png" alt="tnAchieves" class="logo-img">
+		</div>
+		<div class="col-2">
+
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+
+		</div>
+		<div class="col-6 splash-right">
+			<div class="input-group input-group-lg">
+				<input type="text" placeholder="email" ng-model="user.email" aria-describedby="sizing-addon1" class="login-input">
+			</div>
+			<div class="input-group input-group-lg">
+				<input type="password" placeholder="password" ng-model="user.password" aria-describedby="sizing-addon1" class="login-input">
+			</div>
+			<div class="login-button">
+				<button type="button" ng-click="login()" class="btn btn-primary btn-lg login-btn">Log In</button>
+			</div>
+			<div class="error" ng-show="errorMessage">
+				<p>Email or password was incorrect.</p>
+			</div>
+		</div>
+	</div>
+</div>

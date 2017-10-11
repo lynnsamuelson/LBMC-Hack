@@ -1,0 +1,59 @@
+div {
+	border: 1px solid white;
+}
+
+//colors
+$green: #9fcf67;
+$gray: #808040;
+
+//nav styles
+img.logo-img {
+	width: 50%;
+}
+
+a.nav-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+//home styles
+
+p.purge-text {
+	margin-top: 8em;
+}
+
+.home-box {
+	height: 50%;
+}
+
+.splash-btn {
+	height: 4em;
+	font-size: 2em;
+	width: 100%;
+	margin-top: 2em;
+	background-color: $green;
+	color: white !important;
+	cursor: pointer;
+}
+
+// login styles
+.login-input {
+	height: 4em;
+	width: 200%;
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.login-buttons {
+	display: flex;
+	margin-top: 3em;
+	justify-content: space-around;
+}
+
+.login-btn {
+	background-color: $green;
+	border: 0;
+	width: 40%;
+	margin: 0.5em;
+	cursor: pointer;
+}
