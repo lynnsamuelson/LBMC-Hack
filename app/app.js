@@ -71,5 +71,9 @@ app.config(($routeProvider) => {
 		controller: 'userEditCtrl'
 		// resolve: {isAdmin}   //temporarily disabled
 	})
+	.when('/details',{
+		templateUrl: 'partials/results-detail.html',
+		controller: 'detailCtrl'
+	})
 	.otherwise('/');
 });
