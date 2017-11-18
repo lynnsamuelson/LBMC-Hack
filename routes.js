@@ -8,7 +8,7 @@ const { sayHello } = require('./helloCtrl.js');
 
 router.get('/messages/:id', getMessagesByContactId); //if this route, get all emails attached to a certain id
 
-router.post('/uploadfile/:file', uploadFileFromWeb); //if this route, get all emails attached to a certain id
+router.post('/uploadfile', uploadFileFromWeb); //if this route, get all emails attached to a certain id
 // router.post('/email/upload', postEmailData);
 router.get('/hello', sayHello);
 

@@ -1,8 +1,14 @@
 'use strict';
 
-let express = require('express');
-let app = express();
-let routes = require('./routes.js');
+const express = require('express');
+const app = express();
+const routes = require('./routes.js');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/', routes);
 
@@ -17,7 +23,7 @@ app.use( (err, req, res, next) => {
     res.status(err.status||500);
     res.json({
     message:"A problem occurred.",
-	err:err
+	err: err
     })
 });
 
