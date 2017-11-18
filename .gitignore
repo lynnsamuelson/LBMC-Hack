@@ -6,3 +6,4 @@ dist/
 lib/node_modules
 lib/.sass-cache
 lib/package-lock.json
+data/
