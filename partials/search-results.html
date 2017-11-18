@@ -19,14 +19,14 @@
         </th>
       </thead>
       <tbody>
-        <tr class="song-object" ng-repeat="contactObj in arrayOfObj | orderBy:sortKey:reverse">
-          <td class="contactID">{{contactObj.contactID}}</td>
-          <td class="contactName">{{contactObj.contactName}}</td>
-          <td class="dataSent">{{contactObj.dataSent}}</td>
+        <tr class="song-object" database-id="{{contactObj.message_id}}" ng-repeat="contactObj in arrayOfObj | orderBy:sortKey:reverse">
+          <td class="contactID">{{contactObj.contactId}}</td>
+          <td class="contactName">{{contactObj.contact}}</td>
+          <td class="dateSent">{{contactObj.dateSent}}</td>
           <td class="createdDate">{{contactObj.createdDate}}</td>
-          <td class="subject">{{contactObj.subject}}</td>
+          <td class="subjectLine">{{contactObj.subjectLine}}</td>
           <td class="messageType">{{contactObj.messageType}}</td>
-          <td><a href="#!/details" ng-click="detailFunction($event)">Details</a></td>
+          <td><a href="" ng-click="detailFunction($event)">Details</a></td>
         </tr>
       </tbody>
     </table>

@@ -16,14 +16,10 @@ app.factory('uploadFactory', function ($q, $http) {
 	};
 
 
+	//send to API -- OPTION ONE
 	function uploadToApi(arrObj){
 		return $q((resolve, reject)=>{
-			$http({
-				method: 'POST',
-				url: 'http://localhost:3000/uploadfile',
-				data: arrObj,
-				headers: {'Content-Type': 'application/json'}
-			})
+			$http.post(`http://localhost:3000/uploadfile/${arrObj}`)
       .then((data) => {
         console.log("uploaded to Api?", data);
         resolve();
@@ -33,5 +29,24 @@ app.factory('uploadFactory', function ($q, $http) {
       });
 		});
 	}
+	
+	// //send to API -- OPTION TWO
+	// function uploadToApi(arrObj){
+	// 	return $q((resolve, reject)=>{
+	// 		$http({
+	// 			url: `http://localhost:3000/uploadfile/`,
+	// 			method: "POST",
+	// 			body: arrObj,
+	// 			headers: {'Content-Type': 'application/json'}})
+	// 			.then((data) => {
+  //       console.log("uploaded to Api?", data);
+  //       resolve();
+  //     })
+  //     .catch( (err) => {
+  //       reject(err);
+  //     });
+	// 	});
+	// }
+
 	return {uploadFile};
 });
